@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kasir</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+
+<div class="container">
+
+    <aside class="sidebar">
+
+        <div class="logo">
+            <i class="fa-solid fa-cash-register"></i>
+            <span>Kasir</span>
+        </div>
+
+        <ul class="menu">
+            <li class="active">
+                <i class="fa-solid fa-cart-shopping"></i>
+                Transaksi
+            </li>
+
+            <li>
+                <i class="fa-solid fa-box"></i>
+                Produk
+            </li>
+
+            <li>
+                <i class="fa-solid fa-chart-line"></i>
+                Laporan
+            </li>
+
+            <li>
+                <i class="fa-solid fa-users"></i>
+                Pelanggan
+            </li>
+
+            <li>
+                <i class="fa-solid fa-gear"></i>
+                Pengaturan
+            </li>
+        </ul>
+
+    </aside>
+
+    <main class="content">
+
+        <div class="header">
+            <h2>Transaksi</h2>
+
+            <div class="date">
+                <i class="fa-regular fa-calendar"></i>
+                24 Mei 2024
+            </div>
+        </div>
+
+        <div class="product-grid">
+
+            <div class="product">
+                <img src="img/aqua.png">
+                <h4>Aqua 600ml</h4>
+                <p>Rp 5.000</p>
+                <button onclick="tambahProduk('Aqua 600ml',5000)">
+                    Tambah
+                </button>
+            </div>
+
+            <div class="product">
+                <img src="img/indomie.png">
+                <h4>Indomie Goreng</h4>
+                <p>Rp 3.500</p>
+                <button onclick="tambahProduk('Indomie',3500)">
+                    Tambah
+                </button>
+            </div>
+
+            <div class="product">
+                <img src="img/tehbotol.png">
+                <h4>Teh Botol</h4>
+                <p>Rp 4.500</p>
+                <button onclick="tambahProduk('Teh Botol',4500)">
+                    Tambah
+                </button>
+            </div>
+
+        </div>
+
+    </main>
+
+    <aside class="cart">
+
+        <h3>Keranjang</h3>
+
+        <div id="keranjang"></div>
+
+        <div class="total">
+            Total :
+            <span id="total">Rp 0</span>
+        </div>
+
+        <button class="bayar">
+            BAYAR
+        </button>
+
+    </aside>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
