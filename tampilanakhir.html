@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Splash Screen Kasir</title>
+
+ 
+  <link rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body{
+      width:100%;
+      height:100vh;
+      background:#f3f3f3;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+    }
+
+    .container{
+      text-align:center;
+    }
+
+   
+    .icon-box{
+      position:relative;
+      width:160px;
+      height:160px;
+      margin:auto;
+      margin-bottom:20px;
+    }
+
+    .cashier{
+      font-size:120px;
+      color:#2d8cff;
+    }
+
+    .receipt{
+      position:absolute;
+      top:10px;
+      left:15px;
+      font-size:45px;
+      color:#d9d9d9;
+    }
+
+    .price{
+      position:absolute;
+      top:0;
+      right:0;
+      background:#ff6b6b;
+      color:white;
+      padding:8px 14px;
+      border-radius:6px;
+      font-size:18px;
+      font-weight:bold;
+    }
+
+    .coin{
+      position:absolute;
+      right:-5px;
+      bottom:10px;
+      width:55px;
+      height:55px;
+      border-radius:50%;
+      background:#ffbf5e;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      color:white;
+      font-size:28px;
+      font-weight:bold;
+      border:4px solid #ffd58c;
+    }
+
+   
+    h1{
+      font-size:72px;
+      font-weight:bold;
+      color:black;
+      margin-bottom:15px;
+    }
+
+    p{
+      font-size:28px;
+      color:#222;
+      line-height:1.5;
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+
+   
+    <div class="icon-box">
+
+      <i class="fa-solid fa-cash-register cashier"></i>
+
+      <i class="fa-solid fa-receipt receipt"></i>
+
+      <div class="price">
+        —
+      </div>
+
+      <div class="coin">
+        $
+      </div>
+
+    </div>
+
+    
+    <h1>Kasir</h1>
+
+    <p>
+      Sistem kasir sederhana<br>
+      untuk bisnis Anda
+    </p>
+
+  </div>
+
+</body>
+</html>

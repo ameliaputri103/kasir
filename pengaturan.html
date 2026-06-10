@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pengaturan Kasir</title>
+
+  <link rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body{
+      display:flex;
+      background:#f5f5f5;
+      height:100vh;
+    }
+
+    
+    .sidebar{
+      width:230px;
+      background:white;
+      border-right:1px solid #ccc;
+      padding:20px 15px;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+    }
+
+    .logo{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      font-size:22px;
+      font-weight:bold;
+      color:#4da3ff;
+      margin-bottom:40px;
+    }
+
+    .logo i{
+      background:#4da3ff;
+      color:white;
+      padding:10px;
+      border-radius:8px;
+    }
+
+    .menu{
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+    }
+
+    .menu-item{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      padding:12px;
+      border-radius:25px;
+      cursor:pointer;
+      transition:0.3s;
+      color:#333;
+    }
+
+    .menu-item:hover{
+      background:#eef6ff;
+    }
+
+    .active{
+      background:#58adff;
+      border:1px solid #333;
+    }
+
+    
+    .admin-box{
+      border:1px solid #bbb;
+      border-radius:10px;
+      padding:10px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      background:#fafafa;
+    }
+
+    .admin-left{
+      display:flex;
+      gap:10px;
+      align-items:center;
+    }
+
+    .admin-left i{
+      font-size:25px;
+      color:#58adff;
+    }
+
+    
+    .main{
+      flex:1;
+      padding:20px 35px;
+    }
+
+    .title{
+      font-size:38px;
+      font-weight:bold;
+      margin-bottom:30px;
+    }
+
+    
+    .setting-container{
+      display:flex;
+      gap:20px;
+      height:88%;
+    }
+
+   
+    .tab-box{
+      width:180px;
+      background:white;
+      border:1px solid #ccc;
+      border-radius:12px;
+      padding:20px;
+    }
+
+    .tab{
+      padding:12px;
+      text-align:center;
+      border-radius:10px;
+      margin-bottom:15px;
+      font-size:20px;
+      cursor:pointer;
+    }
+
+    .tab.active-tab{
+      background:#f2eded;
+      color:#0d84ff;
+      font-weight:bold;
+    }
+
+   
+    .form-box{
+      flex:1;
+      background:white;
+      border:1px solid #ccc;
+      border-radius:12px;
+      padding:25px;
+    }
+
+    .form-group{
+      margin-bottom:18px;
+    }
+
+    .form-group label{
+      display:block;
+      margin-bottom:8px;
+      font-size:18px;
+      color:#444;
+    }
+
+    .form-control{
+      width:100%;
+      padding:14px;
+      border:1px solid #bbb;
+      border-radius:10px;
+      font-size:18px;
+      outline:none;
+    }
+
+    .form-control:focus{
+      border-color:#0d84ff;
+    }
+
+    .btn-save{
+      margin-top:30px;
+      float:right;
+      background:#0d84ff;
+      color:white;
+      border:none;
+      padding:18px 35px;
+      border-radius:18px;
+      font-size:22px;
+      cursor:pointer;
+      transition:0.3s;
+    }
+
+    .btn-save:hover{
+      opacity:0.8;
+    }
+
+  </style>
+</head>
+
+<body>
+
+  
+  <div class="sidebar">
+
+    <div>
+
+     
+      <div class="logo">
+        <i class="fa-solid fa-bag-shopping"></i>
+        <span>Kasir</span>
+      </div>
+
+      
+      <div class="menu">
+
+        <div class="menu-item" onclick="window.location.href='transaksi.html'">
+          <i class="fa-solid fa-house"></i>
+          Dashboard
+        </div>
+
+        <div class="menu-item"  onclick="window.location.href='transaksi.html'">
+          <i class="fa-solid fa-file-invoice"></i>
+          Transaksi
+        </div>
+
+        <div class="menu-item" onclick="window.location.href='produk.html'">
+          <i class="fa-solid fa-cube"></i>
+          Produk
+        </div>
+
+        <div class="menu-item"  onclick="window.location.href='laporan.html'">
+          <i class="fa-solid fa-chart-line"></i>
+          Laporan
+        </div>
+
+        <div class="menu-item" onclick="window.location.href='pelanggan.html'">
+          <i class="fa-solid fa-users"></i>
+          Pelanggan
+        </div>
+
+        <div class="menu-item active" onclick="window.location.href='pengaturan.html'">
+          <i class="fa-solid fa-gear"></i>
+          Pengaturan
+        </div>
+
+      </div>
+
+    </div>
+
+   
+    <div class="admin-box">
+
+      <div class="admin-left">
+        <i class="fa-solid fa-user"></i>
+
+        <div>
+          <b>Admin</b><br>
+          Kasir
+        </div>
+      </div>
+
+      <i class="fa-solid fa-angle-down"></i>
+
+    </div>
+
+  </div>
+
+ 
+  <div class="main">
+
+    <div class="title">
+      Pengaturan
+    </div>
+
+    <div class="setting-container">
+
+     
+      <div class="tab-box">
+
+        <div class="tab active-tab">
+          Umum
+        </div>
+
+        <div class="tab">
+          Toko
+        </div>
+
+        <div class="tab">
+          Pengguna
+        </div>
+
+      </div>
+
+     
+      <div class="form-box">
+
+        <div class="form-group">
+          <label>Nama Toko</label>
+          <input type="text"
+          class="form-control"
+          value="Toko snackygirls">
+        </div>
+
+        <div class="form-group">
+          <label>Alamat Toko</label>
+          <input type="text"
+          class="form-control"
+          value="Jl.Rongga No.10,Bandung,Indonesia">
+        </div>
+
+        <div class="form-group">
+          <label>No.Telepon</label>
+          <input type="text"
+          class="form-control"
+          value="0888-9990-8880">
+        </div>
+
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email"
+          class="form-control"
+          value="Toko snackygirls@gmail.com">
+        </div>
+
+        <div class="form-group">
+          <label>Mata Uang</label>
+          <input type="text"
+          class="form-control"
+          value="Rupiah(Rp)">
+        </div>
+
+        <div class="form-group">
+          <input type="text"
+          class="form-control"
+          value="0">
+        </div>
+
+        <button class="btn-save"onclick="window.location.href='login.html'">
+          simpan perubahan
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</body>
+</html>

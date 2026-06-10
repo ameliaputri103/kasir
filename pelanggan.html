@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pelanggan - Kasir</title>
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+body{
+    display:flex;
+    background:#f5f5f5;
+}
+
+.sidebar{
+    width:240px;
+    height:100vh;
+    background:white;
+    border-right:1px solid #ddd;
+    padding:20px;
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-size:28px;
+    font-weight:bold;
+    color:#4da3ff;
+    margin-bottom:40px;
+}
+
+.logo i{
+    background:#4da3ff;
+    color:white;
+    padding:10px;
+    border-radius:10px;
+}
+
+.menu{
+    list-style:none;
+}
+
+.menu li{
+    padding:15px;
+    margin-bottom:10px;
+    border-radius:30px;
+    cursor:pointer;
+}
+
+.menu li:hover{
+    background:#edf5ff;
+}
+
+.active{
+    background:#4da3ff;
+    color:white;
+}
+
+.menu i{
+    margin-right:10px;
+}
+
+.content{
+    flex:1;
+    padding:30px;
+}
+
+.header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:20px;
+}
+
+.btn-add{
+    background:#0a80ff;
+    color:white;
+    border:none;
+    padding:12px 20px;
+    border-radius:30px;
+    cursor:pointer;
+}
+
+.search-box{
+    background:white;
+    padding:12px;
+    border-radius:10px;
+    margin-bottom:20px;
+}
+
+.search-box input{
+    width:95%;
+    border:none;
+    outline:none;
+    font-size:15px;
+}
+
+.table-container{
+    background:white;
+    padding:20px;
+    border-radius:15px;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+th,td{
+    padding:15px;
+    text-align:center;
+    border-bottom:1px solid #eee;
+}
+
+.aksi i{
+    cursor:pointer;
+    margin:0 5px;
+}
+
+.modal{
+    display:none;
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.4);
+    justify-content:center;
+    align-items:center;
+}
+
+.modal-content{
+    background:white;
+    width:400px;
+    border-radius:15px;
+    overflow:hidden;
+}
+
+.modal-header{
+    padding:20px;
+    display:flex;
+    justify-content:space-between;
+    border-bottom:1px solid #ddd;
+}
+
+.modal-body{
+    padding:20px;
+}
+
+.modal-body input{
+    width:100%;
+    padding:12px;
+    margin-bottom:15px;
+    border:1px solid #ccc;
+    border-radius:8px;
+}
+
+.modal-footer{
+    padding:20px;
+    text-align:right;
+}
+
+.btn-save{
+    background:#4da3ff;
+    color:white;
+    border:none;
+    padding:10px 20px;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+.btn-cancel{
+    background:#ddd;
+    border:none;
+    padding:10px 20px;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+.close{
+    cursor:pointer;
+    font-size:24px;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="sidebar">
+
+    <div class="logo">
+        <i class="fa-solid fa-bag-shopping"></i>
+        Kasir
+    </div>
+
+    <ul class="menu">
+    <li onclick="window.location.href='dashboard.html'">
+        <i class="fa-solid fa-house"></i> Dashboard
+    </li>
+
+    <li onclick="window.location.href='transaksi.html'">
+        <i class="fa-solid fa-receipt"></i> Transaksi
+    </li>
+
+    <li onclick="window.location.href='produk.html'">
+        <i class="fa-solid fa-box"></i> Produk
+    </li>
+
+    <li onclick="window.location.href='laporan.html'">
+        <i class="fa-solid fa-chart-line"></i> Laporan
+    </li>
+
+    <li onclick="window.location.href='pelanggan.html'">
+        <i class="fa-solid fa-users"></i> Pelanggan
+    </li>
+
+    <li onclick="window.location.href='pengaturan.html'">
+        <i class="fa-solid fa-gear"></i> Pengaturan
+    </li>
+</ul>
+</div>
+
+<div class="content">
+
+    <div class="header">
+        <h2>Pelanggan</h2>
+
+        <button class="btn-add" onclick="openModal()">
+            + Tambah Pelanggan
+        </button>
+    </div>
+
+    <div class="search-box">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <input type="text" id="searchInput"
+        placeholder="Cari pelanggan...">
+    </div>
+
+    <div class="table-container">
+
+        <table id="customerTable">
+
+            <thead>
+                <tr>
+                    <th>Nama</th>
+                    <th>No.Telepon</th>
+                    <th>Email</th>
+                    <th>Total Transaksi</th>
+                    <th>Aksi</th>
+                </tr>
+            </thead>
+
+            <tbody id="dataPelanggan">
+
+                <tr>
+                    <td>Budi</td>
+                    <td>08123456789</td>
+                    <td>budi@gmail.com</td>
+                    <td>12</td>
+                    <td class="aksi">
+                        <i class="fa-solid fa-trash" onclick="hapus(this)"></i>
+                    </td>
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+<div class="modal" id="modal">
+
+    <div class="modal-content">
+
+        <div class="modal-header">
+            <h3>Tambah Pelanggan</h3>
+
+            <span class="close"
+            onclick="closeModal()">&times;</span>
+        </div>
+
+        <div class="modal-body">
+
+            <input type="text"
+            id="nama"
+            placeholder="Nama Pelanggan">
+
+            <input type="text"
+            id="telepon"
+            placeholder="No Telepon">
+
+            <input type="email"
+            id="email"
+            placeholder="Email">
+
+        </div>
+
+        <div class="modal-footer">
+
+            <button class="btn-cancel"
+            onclick="closeModal()">
+                Batal
+            </button>
+
+            <button class="btn-save"
+            onclick="tambahPelanggan()">
+                Simpan
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+
+function openModal(){
+    document.getElementById("modal").style.display="flex";
+}
+
+function closeModal(){
+    document.getElementById("modal").style.display="none";
+}
+
+function tambahPelanggan(){
+
+    let nama=document.getElementById("nama").value;
+    let telepon=document.getElementById("telepon").value;
+    let email=document.getElementById("email").value;
+
+    if(nama=="" || telepon=="" || email==""){
+        alert("Lengkapi data!");
+        return;
+    }
+
+    let tabel=document.getElementById("dataPelanggan");
+
+    let row=tabel.insertRow();
+
+    row.innerHTML=`
+        <td>${nama}</td>
+        <td>${telepon}</td>
+        <td>${email}</td>
+        <td>0</td>
+        <td class="aksi">
+            <i class="fa-solid fa-trash" onclick="hapus(this)"></i>
+        </td>
+    `;
+
+    document.getElementById("nama").value="";
+    document.getElementById("telepon").value="";
+    document.getElementById("email").value="";
+
+    closeModal();
+}
+
+function hapus(btn){
+    btn.parentElement.parentElement.remove();
+}
+
+document.getElementById("searchInput")
+.addEventListener("keyup", function(){
+
+    let filter=this.value.toLowerCase();
+    let rows=document.querySelectorAll("#dataPelanggan tr");
+
+    rows.forEach(row=>{
+
+        let text=row.innerText.toLowerCase();
+
+        if(text.includes(filter)){
+            row.style.display="";
+        }else{
+            row.style.display="none";
+        }
+
+    });
+
+});
+
+</script>
+
+</body>
+</html>
